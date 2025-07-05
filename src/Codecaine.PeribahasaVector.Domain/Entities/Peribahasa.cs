@@ -1,5 +1,6 @@
 ﻿using Codecaine.Common.Domain;
 using Codecaine.Common.Domain.Interfaces;
+using Codecaine.Common.Primitives.Ensure;
 using Codecaine.PeribahasaVector.Domain.Events;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,12 @@ namespace Codecaine.PeribahasaVector.Domain.Entities
         public Peribahasa(string teks, string maksud, string translation, string context, string source) : base(Guid.NewGuid())
 
         {
+            Ensure.NotEmpty(teks, "The teks is required.", nameof(Teks));
+            Ensure.NotEmpty(maksud, "The maksud is required.", nameof(Maksud));            
+            Ensure.NotEmpty(translation, "The translation is required.", nameof(Translation));
+            Ensure.NotEmpty(context, "The Context is required.", nameof(Context));
+            Ensure.NotEmpty(source, "The Source is required.", nameof(Source));
+
             Teks = teks;
             Maksud = maksud;
             Translation = translation;
