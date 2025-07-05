@@ -28,7 +28,12 @@ namespace Codecaine.PeribahasaVector.Domain.Entities
         /// <summary>
         /// Translation in english
         /// </summary>
-        public string Translation { get; private set; }
+        public string TeksTranslation { get; private set; }
+
+        /// <summary>
+        /// Maksud translation in english
+        /// </summary>
+        public string MaksudTranslation { get; private set; }
 
         /// <summary>
         /// Peribahasa context
@@ -52,26 +57,29 @@ namespace Codecaine.PeribahasaVector.Domain.Entities
 
         public bool Deleted { get; private set; }
 
-        public Peribahasa(string teks, string maksud, string translation, string context, string source) : base(Guid.NewGuid())
+        public Peribahasa(string teks, string maksud, string translation,string maksudTranslation, string context, string source) : base(Guid.NewGuid())
 
         {
             Ensure.NotEmpty(teks, "The teks is required.", nameof(Teks));
             Ensure.NotEmpty(maksud, "The maksud is required.", nameof(Maksud));            
-            Ensure.NotEmpty(translation, "The translation is required.", nameof(Translation));
+            Ensure.NotEmpty(translation, "The translation is required.", nameof(TeksTranslation));
+            Ensure.NotEmpty(maksudTranslation, "The maksudTranslation is required.", nameof(MaksudTranslation));
             Ensure.NotEmpty(context, "The Context is required.", nameof(Context));
             Ensure.NotEmpty(source, "The Source is required.", nameof(Source));
 
             Teks = teks;
             Maksud = maksud;
-            Translation = translation;
+            TeksTranslation = translation;
+            MaksudTranslation = maksudTranslation;
             Context = context;
             Source = source;
-            Content = $"{teks} {maksud} {translation} {context} {source}";
+            Content = $"{teks} {maksud} {translation} {maksudTranslation} {context} {source}";
+
         }
 
-        public static Peribahasa Create(string teks, string maksud, string translation, string context, string source)
+        public static Peribahasa Create(string teks, string maksud, string translation, string maksudTranslation, string context, string source)
         {
-            var peribahasa = new Peribahasa(teks, maksud, translation, context, source);
+            var peribahasa = new Peribahasa(teks, maksud, translation,maksudTranslation, context, source);
 
             peribahasa.AddDomainEvent(new PeribahasaCreatedDomainEvent(peribahasa));
 
