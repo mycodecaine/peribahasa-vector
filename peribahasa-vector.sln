@@ -1,11 +1,80 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36221.1 d17.14
+VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codecaine.Common", "src\Codecaine.Common\Codecaine.Common.csproj", "{3AE3208A-3F5E-4FDF-9239-A711F71FF3F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Common", "0. Common", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Domain", "1. Domain", "{F611ACF8-656F-49D8-9C26-EA20667CB10F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Application", "2. Application", "{873BEAEE-33BC-44D2-AF81-717B4E97D98A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Infrastructure", "3. Infrastructure", "{2676CE54-A0D0-48BB-B618-ECFA7B8D8455}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Presentation", "4. Presentation", "{0E4490BD-3A01-4B5F-99F0-FFE1016202E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codecaine.PeribahasaVector.Domain", "src\Codecaine.PeribahasaVector.Domain\Codecaine.PeribahasaVector.Domain.csproj", "{B5F03EF6-88E1-4063-AC99-586A0507F2E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codecaine.PeribahasaVector.Application", "src\Codecaine.PeribahasaVector.Application\Codecaine.PeribahasaVector.Application.csproj", "{86C8315D-50C5-4564-BF43-1BA8A5F5AB5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codecaine.PeribahasaVector.Infrastructure", "src\Codecaine.PeribahasaVector.Infrastructure\Codecaine.PeribahasaVector.Infrastructure.csproj", "{E4E0DDCA-8DA8-41FD-A20C-417D74A61D9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codecaine.PeribahasaVector.Presentation.WebApi", "src\Codecaine.PeribahasaVector.Presentation.WebApi\Codecaine.PeribahasaVector.Presentation.WebApi.csproj", "{9BC0C254-A27E-48E7-837E-1A40755A1A7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1A0E79D4-96CA-4C18-9A51-A5E029DB4C5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CF85833B-D90E-4FCA-83FF-490A15E0E3D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codecaine.PeribahasaVector.UnitTests", "test\Codecaine.PeribahasaVector.UnitTests\Codecaine.PeribahasaVector.UnitTests.csproj", "{800ECDBC-5991-491A-B1ED-5577EC2EF004}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AE3208A-3F5E-4FDF-9239-A711F71FF3F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AE3208A-3F5E-4FDF-9239-A711F71FF3F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AE3208A-3F5E-4FDF-9239-A711F71FF3F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE3208A-3F5E-4FDF-9239-A711F71FF3F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F03EF6-88E1-4063-AC99-586A0507F2E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F03EF6-88E1-4063-AC99-586A0507F2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F03EF6-88E1-4063-AC99-586A0507F2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F03EF6-88E1-4063-AC99-586A0507F2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86C8315D-50C5-4564-BF43-1BA8A5F5AB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86C8315D-50C5-4564-BF43-1BA8A5F5AB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86C8315D-50C5-4564-BF43-1BA8A5F5AB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86C8315D-50C5-4564-BF43-1BA8A5F5AB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4E0DDCA-8DA8-41FD-A20C-417D74A61D9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4E0DDCA-8DA8-41FD-A20C-417D74A61D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4E0DDCA-8DA8-41FD-A20C-417D74A61D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4E0DDCA-8DA8-41FD-A20C-417D74A61D9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BC0C254-A27E-48E7-837E-1A40755A1A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BC0C254-A27E-48E7-837E-1A40755A1A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BC0C254-A27E-48E7-837E-1A40755A1A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BC0C254-A27E-48E7-837E-1A40755A1A7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{800ECDBC-5991-491A-B1ED-5577EC2EF004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{800ECDBC-5991-491A-B1ED-5577EC2EF004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{800ECDBC-5991-491A-B1ED-5577EC2EF004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{800ECDBC-5991-491A-B1ED-5577EC2EF004}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3AE3208A-3F5E-4FDF-9239-A711F71FF3F1} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {1A0E79D4-96CA-4C18-9A51-A5E029DB4C5E}
+		{F611ACF8-656F-49D8-9C26-EA20667CB10F} = {1A0E79D4-96CA-4C18-9A51-A5E029DB4C5E}
+		{873BEAEE-33BC-44D2-AF81-717B4E97D98A} = {1A0E79D4-96CA-4C18-9A51-A5E029DB4C5E}
+		{2676CE54-A0D0-48BB-B618-ECFA7B8D8455} = {1A0E79D4-96CA-4C18-9A51-A5E029DB4C5E}
+		{0E4490BD-3A01-4B5F-99F0-FFE1016202E7} = {1A0E79D4-96CA-4C18-9A51-A5E029DB4C5E}
+		{B5F03EF6-88E1-4063-AC99-586A0507F2E4} = {F611ACF8-656F-49D8-9C26-EA20667CB10F}
+		{86C8315D-50C5-4564-BF43-1BA8A5F5AB5A} = {873BEAEE-33BC-44D2-AF81-717B4E97D98A}
+		{E4E0DDCA-8DA8-41FD-A20C-417D74A61D9B} = {2676CE54-A0D0-48BB-B618-ECFA7B8D8455}
+		{9BC0C254-A27E-48E7-837E-1A40755A1A7D} = {0E4490BD-3A01-4B5F-99F0-FFE1016202E7}
+		{800ECDBC-5991-491A-B1ED-5577EC2EF004} = {CF85833B-D90E-4FCA-83FF-490A15E0E3D1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F6B2059F-4B1E-43EF-ACEE-FEFF39A1EC48}
