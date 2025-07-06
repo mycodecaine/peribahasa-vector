@@ -7,6 +7,9 @@ using Microsoft.Extensions.Logging;
 
 namespace Codecaine.PeribahasaVector.Application.UseCases.Peribahasas.Commands.CreatePeribahasa
 {
+    /// <summary>
+    /// CreatePeribahasaCommandHandler is responsible for handling the creation of a new Peribahasa.
+    /// </summary>
     public sealed class CreatePeribahasaCommandHandler: CommandHandler<CreatePeribahasaCommand, Result<CreatePeribahasaCommandResponse>>
     {
         private readonly IPeribahasaRepository _repository;
