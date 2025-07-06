@@ -9,6 +9,12 @@
 	<NoWarn>CS8625;CS8618;CS8604;S4035;S125;VSSpell001;S1144</NoWarn>
   </PropertyGroup>
 
+	<PropertyGroup>
+		<!-- Exclude the target project by its name or namespace -->
+		<ExcludeByAttribute>GeneratedCodeAttribute,ExcludeFromCodeCoverageAttribute</ExcludeByAttribute>
+		<Exclude>[Codecaine.Common.*]*</Exclude>
+	</PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />

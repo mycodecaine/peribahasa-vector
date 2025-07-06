@@ -1,6 +1,6 @@
 ﻿namespace Codecaine.PeribahasaVector.Application
 {
-    public class Class1
+    public class ServiceRegistration
     {
 
     }
