@@ -1,4 +1,7 @@
 ﻿using Codecaine.Common.Abstractions;
+using Codecaine.Common.AiServices.Interfaces;
+using Codecaine.Common.AiServices.Ollama;
+using Codecaine.Common.AiServices.OpenAi;
 using Codecaine.Common.AspNetCore.Middleware;
 using Codecaine.Common.Authentication;
 using Codecaine.Common.Authentication.Providers.Services;
@@ -47,6 +50,10 @@ namespace Codecaine.PeribahasaVector.Infrastructure
 
             // Common Library
             services.AddCommonLibrary();
+
+            // Open AI - Embedding  
+            services.AddOptions<OllamaSetting>().BindConfiguration(OllamaSetting.DefaultSectionName);
+            services.AddScoped<IEmbeddingService, OllamaEmbeddingService>();
 
             return services;
         }
