@@ -82,5 +82,34 @@ namespace Codecaine.PeribahasaVector.Domain.Entities
             
         }
 
+        /*
+         
+         CREATE EXTENSION IF NOT EXISTS vector;
+ 
+CREATE TABLE peribahasa (
+ 
+ 
+ 
+ 
+    Id UUID PRIMARY KEY,
+    Teks TEXT NOT NULL,
+    Maksud TEXT NOT NULL,
+    TeksTranslation TEXT NOT NULL,
+    MaksudTranslation TEXT NOT NULL,
+    Context TEXT NOT NULL,
+    Source TEXT NOT NULL,
+    Content TEXT NOT NULL,
+    CreatedOnUtc TIMESTAMP  NOT NULL,
+    ModifiedOnUtc TIMESTAMP ,
+    CreatedBy UUID,
+    ModifiedBy UUID,
+    DeletedOnUtc TIMESTAMP ,
+    Deleted BOOLEAN NOT NULL DEFAULT false,
+    embedding vector(768)
+);
+         
+         
+         */
+
     }
 }
