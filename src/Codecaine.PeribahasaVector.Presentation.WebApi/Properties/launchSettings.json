@@ -10,8 +10,31 @@
     },
     "https": {
       "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "scalar",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionString__DapperDataBase": "Host=localhost:5433;Database=peribahasadb;Username=postgres;Password=ipeadmin123456",
+        "RabbitMq__Host": "localhost",
+        "RabbitMq__UserName": "guest",
+        "RabbitMq__Password": "guest",
+        "RabbitMq__DefaultQueueName": "codecaine-message",
+        "OpenAi__ApiKey": "",
+        "OpenAi__BaseUrl": "https://api.openai.com/v1",
+        "OpenAi__Model": "text-embedding-3-small",
+        "OpenAi__MaxTokens": "1000",
+        "OpenAi__Temperature": "0.7",
+        "HuggingFace__ApiKey": "",
+        "HuggingFace__BaseUrl": "https://api-inference.huggingface.co",
+        "HuggingFace__Model": "paraphrase-MiniLM-L6-v2",
+        "HuggingFace__MaxTokens": "1000",
+        "HuggingFace__Temperature": "0.7",
+        "Ollama__ApiKey": "",
+        "Ollama__BaseUrl": "http://localhost:11434/api",
+        "Ollama__EmbeddingModel": "nomic-embed-text",
+        "Ollama__LargeLanguageModel": "llama3-70b-chat",
+        "Ollama__MaxTokens": "1000",
+        "Ollama__Temperature": "0.7"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7224;http://localhost:5076"
