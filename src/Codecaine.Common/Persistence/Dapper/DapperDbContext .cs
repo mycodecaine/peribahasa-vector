@@ -8,6 +8,7 @@ using Codecaine.Common.Primitives.Maybe;
 using Dapper;
 using MediatR;
 using System.Data;
+using System.Reflection;
 
 namespace Codecaine.Common.Persistence.Dapper
 {
@@ -38,7 +39,24 @@ namespace Codecaine.Common.Persistence.Dapper
         public async Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(Guid id) where TEntity : Entity
         {
             var tableName = GetTableName(typeof(TEntity));
-            string sql = $"SELECT * FROM {tableName} WHERE Id = @Id;";
+
+            // Get all properties of the entity
+            var properties = typeof(TEntity)
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                .Where(p => p.CanRead && p.CanWrite)
+                .Select(p => p.Name)
+                .ToList();
+
+            // Remove the excluded embedding property if specified
+            if (!string.IsNullOrEmpty("embedding"))
+            {
+                properties.Remove("embedding");
+            }
+
+            // Join the column names
+            var columnList = string.Join(", ", properties);
+
+            string sql = $"SELECT {columnList} FROM {tableName} WHERE Id = @Id;";
             var parameters = new DynamicParameters();
             parameters.Add("@Id" , id);
 
@@ -174,13 +192,17 @@ namespace Codecaine.Common.Persistence.Dapper
         public async Task<IEnumerable<(TEntity entity, double Similarity)>> SearchEntityByVectorAsync<TEntity>(string input, int topK = 5) where TEntity : Entity
         {
             var data = await SearchIdByVectorAsync<TEntity>(input, topK);
-            var tasks = data.Select(async item =>
+
+            var selectEntity = data.Select(x=> new { x.id,x.Similarity}).ToList();
+
+
+            var result = new List<(TEntity entity, double Similarity)>();
+            foreach (var item in selectEntity)
             {
                 var entity = await GetBydIdAsync<TEntity>(item.id);
-                return (entity.Value, item.Similarity);
-            });
-
-            return await Task.WhenAll(tasks);
+                result.Add((entity.Value, item.Similarity));
+            }
+            return result;
         }
 
         private void SetAuditProperties<TEntity>(TEntity entity, Guid currentUserId) where TEntity : Entity

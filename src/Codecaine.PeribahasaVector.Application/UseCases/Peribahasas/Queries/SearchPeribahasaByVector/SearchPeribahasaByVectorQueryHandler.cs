@@ -1,4 +1,5 @@
-﻿using Codecaine.Common.CQRS.Base;
+﻿using AutoMapper;
+using Codecaine.Common.CQRS.Base;
 using Codecaine.Common.Primitives.Maybe;
 using Codecaine.PeribahasaVector.Application.ViewModels;
 using Codecaine.PeribahasaVector.Domain.Repositories;
@@ -10,11 +11,13 @@ namespace Codecaine.PeribahasaVector.Application.UseCases.Peribahasas.Queries.Se
     {
         private readonly IPeribahasaRepository _repository;
         private readonly ILogger<SearchPeribahasaByVectorQueryHandler> _logger;
+        private readonly IMapper _mapper;
 
-        public SearchPeribahasaByVectorQueryHandler(ILogger<SearchPeribahasaByVectorQueryHandler> logger, IPeribahasaRepository peribahasaRepository) : base(logger)
+        public SearchPeribahasaByVectorQueryHandler(ILogger<SearchPeribahasaByVectorQueryHandler> logger, IPeribahasaRepository peribahasaRepository, IMapper mapper) : base(logger)
         {
             _repository = peribahasaRepository ?? throw new ArgumentNullException(nameof(peribahasaRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public async override Task<Maybe<List<PeribahasaViewModel>>> Handle(SearchPeribahasaByVectorQuery request, CancellationToken cancellationToken)
@@ -28,16 +31,18 @@ namespace Codecaine.PeribahasaVector.Application.UseCases.Peribahasas.Queries.Se
 
             var peribahasas = result.Select(p=>p.entity).ToList();
 
-            var viewModels = peribahasas.Select(p => new PeribahasaViewModel
-            (
+            //var viewModels = peribahasas.Select(p => new PeribahasaViewModel
+            //(
 
-                Teks: p.Teks,
-                Maksud: p.Maksud,
-                TeksTranslation: p.TeksTranslation,
-                MaksudTranslation: p.MaksudTranslation,
-                Context: p.Context,
-                Source: p.Source
-            )).ToList();
+            //    Teks: p.Teks,
+            //    Maksud: p.Maksud,
+            //    TeksTranslation: p.TeksTranslation,
+            //    MaksudTranslation: p.MaksudTranslation,
+            //    Context: p.Context,
+            //    Source: p.Source
+            //)).ToList();
+
+            var viewModels = _mapper.Map<List<PeribahasaViewModel>>(peribahasas);
 
 
             return viewModels;
