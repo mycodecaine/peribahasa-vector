@@ -11,8 +11,4 @@
     <ProjectReference Include="..\Codecaine.PeribahasaVector.Domain\Codecaine.PeribahasaVector.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\Peribahasas\Queries\" />
-  </ItemGroup>
-
 </Project>

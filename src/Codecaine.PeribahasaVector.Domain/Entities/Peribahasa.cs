@@ -52,6 +52,11 @@ namespace Codecaine.PeribahasaVector.Domain.Entities
 
         public bool Deleted { get; private set; }
 
+        public Peribahasa()
+        {
+
+        }
+
         public Peribahasa(string teks, string maksud, string translation,string maksudTranslation, string context, string source) : base(Guid.NewGuid())
 
         {

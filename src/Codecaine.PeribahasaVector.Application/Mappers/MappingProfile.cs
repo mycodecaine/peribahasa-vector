@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Codecaine.PeribahasaVector.Application.ViewModels;
+using Codecaine.PeribahasaVector.Domain.Entities;
 
 namespace Codecaine.PeribahasaVector.Application.Mappers
 {
@@ -10,7 +12,7 @@ namespace Codecaine.PeribahasaVector.Application.Mappers
             // For example:
             // CreateMap<SourceEntity, DestinationEntity>();
             // CreateMap<CreatePeribahasaCommand, Peribahasa>();
-            // CreateMap<Peribahasa, PeribahasaDto>();
+             CreateMap<Peribahasa, PeribahasaViewModel>();
         }
     }
 }
