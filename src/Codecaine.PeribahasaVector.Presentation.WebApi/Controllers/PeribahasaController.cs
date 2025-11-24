@@ -4,6 +4,7 @@ using Codecaine.Common.Primitives.Maybe;
 using Codecaine.Common.Primitives.Result;
 using Codecaine.PeribahasaVector.Application.UseCases.Peribahasas.Commands.CreatePeribahasa;
 using Codecaine.PeribahasaVector.Application.UseCases.Peribahasas.Queries.SearchPeribahasaByVector;
+using Codecaine.PeribahasaVector.Application.UseCases.Peribahasas.Queries.StreamPeribahasas;
 using Codecaine.PeribahasaVector.Application.ViewModels;
 using Codecaine.PeribahasaVector.Presentation.WebApi.DTOs.Peribahasas;
 using MediatR;
@@ -41,5 +42,26 @@ namespace Codecaine.PeribahasaVector.Presentation.WebApi.Controllers
             .From(new SearchPeribahasaByVectorQuery(content))
             .Bind(query => Mediator.Send(query))
             .Match(Ok, NotFound);
+
+        /// <summary>
+        /// Streams Peribahasas in real-time. Supports optional search term filtering.
+        /// </summary>
+        /// <param name="searchTerm">Optional search term to filter results using vector search</param>
+        /// <param name="maxResults">Maximum number of results to stream (default: 100)</param>
+        /// <returns>A stream of PeribahasaViewModel objects</returns>
+        [HttpGet("stream")]
+        [ProducesResponseType(typeof(IAsyncEnumerable<PeribahasaViewModel>), StatusCodes.Status200OK)]
+        public async IAsyncEnumerable<PeribahasaViewModel> Stream(
+            [FromQuery] string? searchTerm = null,
+            [FromQuery] int maxResults = 100)
+        {
+            var query = new StreamPeribahasasQuery(searchTerm, maxResults);
+            var stream = await Mediator.Send(query);
+
+            await foreach (var item in stream)
+            {
+                yield return item;
+            }
+        }
     }
 }
